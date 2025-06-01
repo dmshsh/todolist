@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@plugin "daisyui";
+.title{
+    margin: 3rem;
+    font-size: 5rem;
+    font-family: 'MyFont';
+}
+@font-face {
+  font-family: 'MyFont';
+  src: url('../Kanit/Kanit-Regular.ttf');
+  font-weight: lighter;
+  font-style: normal;
+}
