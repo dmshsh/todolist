@@ -8,7 +8,6 @@ function App() {
   const [trash, setTrash] = useState([]);
   const [done, setDone] = useState([]);
   const [tasks, setTasks] = useState([]);
-
   useEffect(() => {
     const storedTasks = localStorage.getItem("tasks");
     if (storedTasks) {
@@ -53,6 +52,13 @@ function App() {
 const handlePermanentDelete = (id) => {
   setTrash((prevTrash) => prevTrash.filter((task) => task.id !== id));
 };
+const handleMoveBack = (id) => {
+  const taskToRestore = trash.find(task => task.id === id);
+  if (taskToRestore) {
+    setTrash((prevTrash) => prevTrash.filter(task => task.id !== id));
+    setTasks((prevTasks) => [...prevTasks, taskToRestore]);
+  }
+};
 
   return (
     <>
@@ -71,7 +77,7 @@ const handlePermanentDelete = (id) => {
       </div>
   
       <div className="p-25">
-        <ShowTask onPermanentDelete={handlePermanentDelete} tasks={tasks} done={done} onToggleCompleted={handleToggleCompleted} onTrash={handleTrash} trash={trash} />
+        <ShowTask moveBackToDo={handleMoveBack}  onPermanentDelete={handlePermanentDelete} tasks={tasks} done={done} onToggleCompleted={handleToggleCompleted} onTrash={handleTrash} trash={trash} />
       </div>
     </>
   );

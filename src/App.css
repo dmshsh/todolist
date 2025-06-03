@@ -11,3 +11,6 @@
   font-weight: lighter;
   font-style: normal;
 }
+.font-my-font{
+  font-family: 'MyFont',sans-serif;
+}
